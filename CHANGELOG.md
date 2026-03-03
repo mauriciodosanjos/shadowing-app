@@ -10,6 +10,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.3.0] — 2026-03-03
+
+### Added
+
+- **Favicon** — replaced Vite default SVG with proper multi-size favicon set (`favicon.ico`, `favicon-32x32.png`, `favicon-16x16.png`)
+- **Apple Touch Icon** — `apple-touch-icon.png` (180×180) for iOS "Add to Home Screen"
+- **Android Chrome icon** — `android-chrome-192x192.png` linked via `site.webmanifest`
+- **Web App Manifest** (`site.webmanifest`) — enables "Add to Home Screen" prompt on Android with app name, theme color and standalone display mode
+- **Open Graph image** — `shadowing-app-banner.png` (1200×630) as preview when sharing the app link on social networks and messaging apps
+- **Twitter Card** — `summary_large_image` card with banner image and description
+
+---
+
 ## [0.2.0] — 2026-03-03
 
 ### Added
