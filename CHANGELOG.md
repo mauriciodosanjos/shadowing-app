@@ -10,6 +10,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.2.0] — 2026-03-03
+
+### Added
+
+- **Dark mode** — full CSS custom-property architecture (`:root` + `[data-theme="dark"]`); dark mode is the default on first load; preference persisted to `localStorage` (`theme` key); toggle button (☀️/🌙) in top bar
+- **Help modal** — ℹ️ button in top bar opens a modal with a 7-step usage tutorial and a shadowing technique explanation paragraph; fully localised in all 9 languages; accessible (`role="dialog"`, Escape key, focus trap)
+- **Vercel integration** — `vercel.json` with long-term asset cache (`/assets/*` immutable), no-cache on HTML, and security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`)
+- `@vercel/analytics` and `@vercel/speed-insights` wired in `main.tsx`
+- Open Graph and `theme-color` meta tags in `index.html`
+
+### Changed
+
+- Practice tab title simplified to `'Shadowing'` across all 9 languages (was e.g. `'Treino de Shadowing'`, `'Shadowing Practice'`)
+- Speed, repetitions and interval slider labels abbreviated in all languages to prevent layout overflow
+- `white-space: nowrap` added to `.compactField span` to prevent label text from wrapping on narrow viewports
+- Base desktop font size increased from `20px` to `22px` (~110 % zoom)
+- Dark mode faint text tokens (`--text-faint`, `--text-faintest`) brightened for legibility on dark backgrounds
+
+---
+
 ## [0.1.0] — 2026-03-03
 
 ### Added

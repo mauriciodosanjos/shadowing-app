@@ -50,7 +50,7 @@ export function normalizeSettings(partial: Partial<AppSettings>): AppSettings {
     targetLanguage: normalizeLanguage(partial.targetLanguage, DEFAULT_SETTINGS.targetLanguage),
     voiceByLanguage: normalizeVoiceByLanguage(partial.voiceByLanguage),
     volume: clamp(partial.volume ?? DEFAULT_SETTINGS.volume, 0, 1),
-    rate: clamp(roundToStep(partial.rate ?? DEFAULT_SETTINGS.rate, 0.2), 0.2, 1.4),
+    rate: clamp(roundToStep(partial.rate ?? DEFAULT_SETTINGS.rate, 0.2), 0.4, 1.2),
     repetitions: Math.round(clamp(partial.repetitions ?? DEFAULT_SETTINGS.repetitions, 1, 5)),
     autoAdvance: Boolean(partial.autoAdvance ?? DEFAULT_SETTINGS.autoAdvance),
     randomSpeed: Boolean(partial.randomSpeed ?? DEFAULT_SETTINGS.randomSpeed),

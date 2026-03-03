@@ -105,7 +105,7 @@ export function SettingsPage({
     }
 
     utterance.volume = settings.volume
-    utterance.rate = settings.rate
+    utterance.rate = 1.0
     utterance.onend = () => {
       setIsVoicePreviewPlaying(false)
     }

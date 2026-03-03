@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { getLocalizedLanguageName, getUILabels } from './i18n/ui'
+import { HelpModal } from './components/HelpModal'
 import { PracticePage } from './pages/PracticePage'
 import { SettingsPage } from './pages/SettingsPage'
 import {
@@ -23,6 +24,17 @@ type TabView = 'practice' | 'settings'
 function App() {
   const [activeTab, setActiveTab] = useState<TabView>('practice')
   const [hasUnsavedSettingsChanges, setHasUnsavedSettingsChanges] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    const stored = localStorage.getItem('theme')
+    if (stored) return stored === 'dark'
+    return true
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light')
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
   const [settings, setSettings] = useState<AppSettings>(initialSettings)
   const [activeLanguage, setActiveLanguage] = useState<LanguageCode>(initialSettings.targetLanguage)
   const [customPhraseBank, setCustomPhraseBank] = useState(initialCustomPhraseBank)
@@ -121,6 +133,24 @@ function App() {
             </select>
             <button
               type="button"
+              className="iconButton"
+              aria-label={darkMode ? 'Light mode' : 'Dark mode'}
+              title={darkMode ? 'Light mode' : 'Dark mode'}
+              onClick={() => setDarkMode((prev) => !prev)}
+            >
+              {darkMode ? '☀️' : '🌙'}
+            </button>
+            <button
+              type="button"
+              className="iconButton"
+              aria-label={labels.helpButton}
+              title={labels.helpButton}
+              onClick={() => setShowHelp(true)}
+            >
+              📘
+            </button>
+            <button
+              type="button"
               className={activeTab === 'settings' ? 'iconButton isActive' : 'iconButton'}
               aria-label={activeTab === 'settings' ? labels.tabPractice : labels.tabSettings}
               title={activeTab === 'settings' ? labels.tabPractice : labels.tabSettings}
@@ -151,6 +181,10 @@ function App() {
           onRestoreDefaultPhrases={handleRestoreDefaultPhrases}
           onDirtyChange={setHasUnsavedSettingsChanges}
         />
+      )}
+
+      {showHelp && (
+        <HelpModal labels={labels} onClose={() => setShowHelp(false)} />
       )}
     </main>
   )

@@ -233,7 +233,7 @@ export function PracticePage({ activeLanguage, phrases, settings, onLanguageChan
           return settingsRef.current.rate
         }
 
-        const randomRateOptions = [0.8, 1.0, 1.2, 1.4]
+        const randomRateOptions = [0.4, 0.6, 0.8, 1.0, 1.2]
         const previousRate = lastRandomRateRef.current
         const availableOptions =
           previousRate === null
@@ -292,6 +292,16 @@ export function PracticePage({ activeLanguage, phrases, settings, onLanguageChan
 
     playPhrase(safeCurrentIndex, 0)
   }, [currentPhrase, playPhrase, safeCurrentIndex])
+
+  const handleRateChange = useCallback((newRate: number) => {
+    // Sync ref immediately so playPhrase picks up the new rate without waiting for the effect
+    settingsRef.current = { ...settingsRef.current, rate: newRate }
+    onSettingsChange({ rate: newRate })
+    if (isPlaying) {
+      stopPlayback()
+      playPhraseRef.current(safeCurrentIndex, sentenceIndex)
+    }
+  }, [isPlaying, onSettingsChange, safeCurrentIndex, sentenceIndex, stopPlayback])
 
   const handleNextPhrase = useCallback(() => {
     if (!hasPhrases) {
@@ -537,14 +547,15 @@ export function PracticePage({ activeLanguage, phrases, settings, onLanguageChan
           </div>
 
           <label className="field compactField miniField">
-            <span>{labels.speed}: {settings.rate.toFixed(2)}x</span>
+            <span>{labels.speed}: {settings.randomSpeed ? '~' : `${settings.rate.toFixed(2)}x`}</span>
             <input
               type="range"
-              min={0.2}
-              max={1.4}
+              min={0.4}
+              max={1.2}
               step={0.2}
               value={settings.rate}
-              onChange={(event) => onSettingsChange({ rate: Number(event.target.value) })}
+              disabled={settings.randomSpeed}
+              onChange={(event) => handleRateChange(Number(event.target.value))}
             />
           </label>
 
