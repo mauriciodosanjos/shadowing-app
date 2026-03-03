@@ -15,6 +15,7 @@ Web application for language learning through the **shadowing technique** — li
 | Speech recognition | Web Speech API (`SpeechRecognition`) | native browser |
 | Translation | MyMemory REST API | — |
 | Persistence | `localStorage` | — |
+| Analytics | @vercel/analytics + @vercel/speed-insights | latest |
 | Linter | ESLint + typescript-eslint + react-hooks | 9 |
 
 No CSS framework, no state management library — vanilla React state + `localStorage`.
@@ -104,6 +105,7 @@ Adding a new language requires changes in six places:
 | `shadowing-app-settings` | Serialized `AppSettings` JSON |
 | `shadowing-app-custom-phrases` | `Record<LanguageCode, string[]>` |
 | `shadowing-app-translation-cache` | `Record<string, string>` — key format: `sourceLang__targetLang__text` |
+| `theme` | `'dark'` \| `'light'` — persisted UI theme preference |
 
 Settings are normalized on load (`normalizeSettings`) to handle missing/invalid fields from older versions.
 
