@@ -1,0 +1,82 @@
+[
+  {
+    "id": "zh-1",
+    "text": "你好，你怎么样？",
+    "translations": {
+      "pt": "Olá, como você está?",
+      "en": "Hello, how are you?"
+    }
+  },
+  {
+    "id": "zh-2",
+    "text": "早上好。",
+    "translations": {
+      "pt": "Bom dia.",
+      "en": "Good morning."
+    }
+  },
+  {
+    "id": "zh-3",
+    "text": "非常感谢。",
+    "translations": {
+      "pt": "Muito obrigado.",
+      "en": "Thank you very much."
+    }
+  },
+  {
+    "id": "zh-4",
+    "text": "请再说一遍。",
+    "translations": {
+      "pt": "Por favor, repita isso.",
+      "en": "Please repeat that."
+    }
+  },
+  {
+    "id": "zh-5",
+    "text": "我在学习这门语言。",
+    "translations": {
+      "pt": "Eu estou aprendendo este idioma.",
+      "en": "I am learning this language."
+    }
+  },
+  {
+    "id": "zh-6",
+    "text": "火车站在哪里？",
+    "translations": {
+      "pt": "Onde fica a estação de trem?",
+      "en": "Where is the train station?"
+    }
+  },
+  {
+    "id": "zh-7",
+    "text": "请给我一杯咖啡。",
+    "translations": {
+      "pt": "Eu gostaria de um café, por favor.",
+      "en": "I would like a coffee, please."
+    }
+  },
+  {
+    "id": "zh-8",
+    "text": "这个多少钱？",
+    "translations": {
+      "pt": "Quanto custa isso?",
+      "en": "How much does this cost?"
+    }
+  },
+  {
+    "id": "zh-9",
+    "text": "你可以帮我吗？",
+    "translations": {
+      "pt": "Você pode me ajudar?",
+      "en": "Could you help me?"
+    }
+  },
+  {
+    "id": "zh-10",
+    "text": "明天见。",
+    "translations": {
+      "pt": "Até amanhã.",
+      "en": "See you tomorrow."
+    }
+  }
+]

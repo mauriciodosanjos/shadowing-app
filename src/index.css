@@ -1,0 +1,782 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f5f6fa;
+  color: #1f2937;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.container {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 1rem 1rem 2.5rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.header p {
+  margin: 0.5rem 0 0;
+  color: #4b5563;
+}
+
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.nativeLanguageSelect {
+  min-width: 145px;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #111827;
+  padding: 0.42rem 0.6rem;
+  font-size: 0.82rem;
+}
+
+.topBarActions {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.practiceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.practiceHeader h2 {
+  margin: 0;
+}
+
+.settingsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.settingsHeader h2 {
+  margin: 0;
+}
+
+.practiceLanguageSelect {
+  min-width: 170px;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #111827;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+.settingsVoiceInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.settingsVoiceSelectInline {
+  border: 1px solid #d1d5db;
+  border-radius: 0.55rem;
+  background: #fff;
+  color: #111827;
+  padding: 0.28rem 0.45rem;
+  font-size: 0.72rem;
+  width: 9rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.settingsVoicePreviewStatus {
+  font-size: 0.78rem;
+  color: #4b5563;
+  opacity: 0.92;
+}
+
+.iconButton {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.iconButton.isActive {
+  border-color: #111827;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.tab,
+button {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #111827;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tab.isActive {
+  border-color: #111827;
+  font-weight: 600;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.field select,
+.field input[type='number'],
+.field input[type='range'],
+.field textarea {
+  width: 100%;
+}
+
+.field textarea {
+  resize: vertical;
+  padding: 0.7rem;
+}
+
+.settingsTextarea {
+  min-height: 220px;
+  border: 0;
+  border-radius: 0;
+  background: #f8fafc;
+  color: #111827;
+  line-height: 1.43;
+  font-size: 0.78rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  margin: 0;
+  padding: 0.7rem;
+  resize: none;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.settingsTextarea:focus {
+  outline: none;
+}
+
+.settingsTextarea::placeholder {
+  color: #6b7280;
+}
+
+.settingsTextareaShell {
+  min-height: 220px;
+  border: 1px solid #d1d5db;
+  border-radius: 0.9rem;
+  background: #f8fafc;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settingsTextareaShell:focus-within {
+  border-color: #9ca3af;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+}
+
+.phraseBox {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f9fafb;
+  min-height: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.phraseNotices {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.6rem;
+  min-height: 1.2rem;
+}
+
+.phraseStatus {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+.phraseError {
+  font-size: 0.7rem;
+  color: #ef4444;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+.phraseText {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.phraseWord {
+  display: inline;
+  transition: color 0.1s ease, background-color 0.1s ease;
+  border-radius: 0.2em;
+  padding: 0 0.05em;
+}
+
+.phraseWord + .phraseWord::before {
+  content: '\0020';
+  white-space: pre;
+}
+
+.phraseWordActive {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.phraseMeta {
+  margin: 0.6rem 0 0;
+  color: #4b5563;
+  font-style: italic;
+  line-height: 1.5;
+  font-size: 0.92rem;
+  opacity: 0.88;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.settingsActions {
+  margin-top: 0.25rem;
+}
+
+.settingsActionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.28rem 0.55rem;
+  border-radius: 0.55rem;
+  border-color: #d1d5db;
+  background: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+
+.settingsActionButton:hover:not(:disabled) {
+  border-color: #9ca3af;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.08);
+}
+
+.settingsActionButton:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.settingsActionButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
+}
+
+.settingsActionButtonPrimary {
+  border-color: #15803d;
+  background: #15803d;
+  color: #ffffff;
+}
+
+.settingsActionButtonPrimary:hover:not(:disabled) {
+  border-color: #166534;
+  background: #166534;
+}
+
+.settingsActionButtonDanger {
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+.settingsActionButtonDanger:hover:not(:disabled) {
+  border-color: #dc2626;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.12);
+}
+
+.settingsActionIcon {
+  line-height: 1;
+  font-size: 0.78rem;
+}
+
+.settingsCounterItem {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #f9fafb;
+  color: #9ca3af;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.settingsCounterInline {
+  margin-inline-start: auto;
+  align-self: center;
+}
+
+.settingsSaveStatusInline {
+  font-size: 0.76rem;
+  color: #166534;
+  opacity: 0.92;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.settingsTextarea.isSuccessFlash {
+  background: #ecfdf3;
+  transition: background 0.45s ease;
+}
+
+.settingsTextareaGutter.isSuccessFlash {
+  background: #dcfce7;
+  color: #166534;
+  transition: background 0.45s ease, color 0.45s ease;
+}
+
+.controlLine {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 0.65rem;
+}
+
+.transportGroup {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.9rem;
+  background: #f9fafb;
+  align-self: stretch;
+}
+
+.transportBlock {
+  display: flex;
+  align-items: stretch;
+}
+
+.inlineStatus {
+  margin: 0;
+  padding-left: 0.2rem;
+  font-size: 0.78rem;
+  color: #6b7280;
+  opacity: 0.88;
+}
+
+.keyboardHint {
+  margin: 0.6rem 0 0;
+  font-size: 0.76rem;
+  color: #6b7280;
+  opacity: 0.9;
+}
+
+.iconControlButton {
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #111827;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
+}
+
+.iconControlButton:hover:not(:disabled) {
+  border-color: #9ca3af;
+}
+
+.playButton {
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+.playButton:hover:not(:disabled) {
+  background: #1f2937;
+  border-color: #1f2937;
+}
+
+.autoToggle {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  color: #111827;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.autoToggle.isActive {
+  border-color: #111827;
+  background: #111827;
+  color: #fff;
+}
+
+.autoToggle.smallToggle {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-color: #d1d5db;
+}
+
+.autoToggle.smallToggle .iconGlyph {
+  width: 1rem;
+  height: 1rem;
+}
+
+.autoToggle.smallToggle.isActive {
+  border-color: #374151;
+  background: #374151;
+}
+
+.iconGlyph {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.miniFields {
+  display: grid;
+  grid-template-columns: auto repeat(3, minmax(80px, 1fr));
+  gap: 0.25rem;
+  flex: 1;
+  padding: 0.2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.9rem;
+  background: #f9fafb;
+  align-items: stretch;
+}
+
+.toggleColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  border-right: 1px solid #e9ecef;
+  padding-right: 0.4rem;
+  margin-right: 0.05rem;
+}
+
+.toggleColumnLabel {
+  font-size: 0.6rem;
+  color: #b0b7c3;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding-left: 0.1rem;
+}
+
+.toggleRow {
+  display: flex;
+  flex-direction: row;
+  gap: 0.18rem;
+  align-items: center;
+}
+
+
+.miniField {
+  min-width: 60px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.6rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.compactControls {
+  gap: 0.5rem;
+}
+
+.compactField {
+  margin-bottom: 0;
+}
+
+.compactField span {
+  font-size: 0.58rem;
+  color: #9ca3af;
+}
+
+.compactField input[type='number'] {
+  height: 1.75rem;
+  padding: 0.15rem 0.35rem;
+  font-size: 0.82rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.45rem;
+}
+
+.compactField input[type='range'] {
+  height: 0.85rem;
+}
+
+.compactField select {
+  height: 1.75rem;
+  padding: 0.15rem 0.35rem;
+  font-size: 0.82rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.45rem;
+  background: #ffffff;
+}
+
+@media (max-width: 900px) {
+  :root {
+    font-size: 18px;
+  }
+
+  .controlLine {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+
+  .transportGroup {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .transportBlock {
+    width: 100%;
+  }
+
+  .miniFields {
+    grid-template-columns: repeat(3, 1fr) auto;
+    width: 100%;
+  }
+
+  .toggleColumnLabel {
+    display: none;
+  }
+
+  .settingsHeader {
+    flex-wrap: wrap;
+  }
+
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .practiceHeader,
+  .settingsHeader {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .practiceLanguageSelect {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .transportGroup {
+    gap: 0.35rem;
+    padding: 0.2rem;
+  }
+
+  .transportBlock {
+    width: 100%;
+  }
+
+  .iconControlButton,
+  .playButton,
+  .autoToggle {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .controlLine {
+    gap: 0.5rem;
+  }
+
+  .miniFields {
+    gap: 0.3rem;
+    padding: 0.2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .toggleColumn {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    border-left: none;
+    border-top: 1px solid #e9ecef;
+    padding-left: 0.1rem;
+    padding-top: 0.3rem;
+    margin-left: 0;
+    margin-top: 0.1rem;
+  }
+
+  .toggleColumnLabel {
+    display: none;
+  }
+
+  .miniField {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .inlineStatus {
+    padding-left: 0;
+  }
+
+  .keyboardHint {
+    font-size: 0.84rem;
+    line-height: 1.35;
+    opacity: 0.96;
+  }
+
+  .settingsActionButton {
+    padding: 0.28rem 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .settingsSaveStatusInline,
+  .settingsCounterInline {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .settingsTextarea {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .phraseMeta {
+    font-size: 0.86rem;
+    opacity: 0.78;
+  }
+}
+
+@media (min-width: 900px) {
+  .fieldGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+  }
+}
+
+.status {
+  margin: 1rem 0 0;
+  color: #374151;
+}
+
+.errorText {
+  margin: 0.75rem 0 0;
+  color: #b91c1c;
+}
+
+/* ── Mic recording state on transport toggle ────────────────── */
+
+.autoToggle.isRecording {
+  color: #dc2626;
+  animation: micPulse 0.9s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── Pronunciation score dot ───────────────────────────────── */
+
+.scoreDot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  align-self: center;
+  background: #d1d5db;
+}
+
+.scoreDot.score-good   { background: #16a34a; }
+.scoreDot.score-medium { background: #ca8a04; }
+.scoreDot.score-poor   { background: #dc2626; }

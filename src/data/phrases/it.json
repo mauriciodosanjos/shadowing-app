@@ -1,0 +1,82 @@
+[
+  {
+    "id": "it-1",
+    "text": "Ciao, come stai?",
+    "translations": {
+      "pt": "Olá, como você está?",
+      "en": "Hello, how are you?"
+    }
+  },
+  {
+    "id": "it-2",
+    "text": "Buongiorno.",
+    "translations": {
+      "pt": "Bom dia.",
+      "en": "Good morning."
+    }
+  },
+  {
+    "id": "it-3",
+    "text": "Grazie mille.",
+    "translations": {
+      "pt": "Muito obrigado.",
+      "en": "Thank you very much."
+    }
+  },
+  {
+    "id": "it-4",
+    "text": "Per favore, ripeti.",
+    "translations": {
+      "pt": "Por favor, repita isso.",
+      "en": "Please repeat that."
+    }
+  },
+  {
+    "id": "it-5",
+    "text": "Sto imparando questa lingua.",
+    "translations": {
+      "pt": "Eu estou aprendendo este idioma.",
+      "en": "I am learning this language."
+    }
+  },
+  {
+    "id": "it-6",
+    "text": "Dov'è la stazione?",
+    "translations": {
+      "pt": "Onde fica a estação de trem?",
+      "en": "Where is the train station?"
+    }
+  },
+  {
+    "id": "it-7",
+    "text": "Vorrei un caffè, per favore.",
+    "translations": {
+      "pt": "Eu gostaria de um café, por favor.",
+      "en": "I would like a coffee, please."
+    }
+  },
+  {
+    "id": "it-8",
+    "text": "Quanto costa?",
+    "translations": {
+      "pt": "Quanto custa isso?",
+      "en": "How much does this cost?"
+    }
+  },
+  {
+    "id": "it-9",
+    "text": "Puoi aiutarmi?",
+    "translations": {
+      "pt": "Você pode me ajudar?",
+      "en": "Could you help me?"
+    }
+  },
+  {
+    "id": "it-10",
+    "text": "A domani.",
+    "translations": {
+      "pt": "Até amanhã.",
+      "en": "See you tomorrow."
+    }
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ko-1",
+    "text": "안녕하세요, 잘 지내세요?",
+    "translations": {
+      "pt": "Olá, como você está?",
+      "en": "Hello, how are you?"
+    }
+  },
+  {
+    "id": "ko-2",
+    "text": "좋은 아침입니다.",
+    "translations": {
+      "pt": "Bom dia.",
+      "en": "Good morning."
+    }
+  },
+  {
+    "id": "ko-3",
+    "text": "정말 감사합니다.",
+    "translations": {
+      "pt": "Muito obrigado.",
+      "en": "Thank you very much."
+    }
+  },
+  {
+    "id": "ko-4",
+    "text": "다시 말씀해 주세요.",
+    "translations": {
+      "pt": "Por favor, repita isso.",
+      "en": "Please repeat that."
+    }
+  },
+  {
+    "id": "ko-5",
+    "text": "저는 이 언어를 배우고 있어요.",
+    "translations": {
+      "pt": "Eu estou aprendendo este idioma.",
+      "en": "I am learning this language."
+    }
+  },
+  {
+    "id": "ko-6",
+    "text": "기차역이 어디에 있나요?",
+    "translations": {
+      "pt": "Onde fica a estação de trem?",
+      "en": "Where is the train station?"
+    }
+  },
+  {
+    "id": "ko-7",
+    "text": "커피 한 잔 부탁합니다.",
+    "translations": {
+      "pt": "Eu gostaria de um café, por favor.",
+      "en": "I would like a coffee, please."
+    }
+  },
+  {
+    "id": "ko-8",
+    "text": "이거 얼마예요?",
+    "translations": {
+      "pt": "Quanto custa isso?",
+      "en": "How much does this cost?"
+    }
+  },
+  {
+    "id": "ko-9",
+    "text": "저를 도와주실 수 있나요?",
+    "translations": {
+      "pt": "Você pode me ajudar?",
+      "en": "Could you help me?"
+    }
+  },
+  {
+    "id": "ko-10",
+    "text": "내일 봐요.",
+    "translations": {
+      "pt": "Até amanhã.",
+      "en": "See you tomorrow."
+    }
+  }
+]

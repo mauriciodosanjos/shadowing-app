@@ -1,0 +1,82 @@
+[
+  {
+    "id": "es-1",
+    "text": "Hola, ¿cómo estás?",
+    "translations": {
+      "pt": "Olá, como você está?",
+      "en": "Hello, how are you?"
+    }
+  },
+  {
+    "id": "es-2",
+    "text": "Buenos días.",
+    "translations": {
+      "pt": "Bom dia.",
+      "en": "Good morning."
+    }
+  },
+  {
+    "id": "es-3",
+    "text": "Muchas gracias.",
+    "translations": {
+      "pt": "Muito obrigado.",
+      "en": "Thank you very much."
+    }
+  },
+  {
+    "id": "es-4",
+    "text": "Por favor, repite eso.",
+    "translations": {
+      "pt": "Por favor, repita isso.",
+      "en": "Please repeat that."
+    }
+  },
+  {
+    "id": "es-5",
+    "text": "Estoy aprendiendo este idioma.",
+    "translations": {
+      "pt": "Eu estou aprendendo este idioma.",
+      "en": "I am learning this language."
+    }
+  },
+  {
+    "id": "es-6",
+    "text": "¿Dónde está la estación de tren?",
+    "translations": {
+      "pt": "Onde fica a estação de trem?",
+      "en": "Where is the train station?"
+    }
+  },
+  {
+    "id": "es-7",
+    "text": "Quisiera un café, por favor.",
+    "translations": {
+      "pt": "Eu gostaria de um café, por favor.",
+      "en": "I would like a coffee, please."
+    }
+  },
+  {
+    "id": "es-8",
+    "text": "¿Cuánto cuesta esto?",
+    "translations": {
+      "pt": "Quanto custa isso?",
+      "en": "How much does this cost?"
+    }
+  },
+  {
+    "id": "es-9",
+    "text": "¿Puedes ayudarme?",
+    "translations": {
+      "pt": "Você pode me ajudar?",
+      "en": "Could you help me?"
+    }
+  },
+  {
+    "id": "es-10",
+    "text": "Hasta mañana.",
+    "translations": {
+      "pt": "Até amanhã.",
+      "en": "See you tomorrow."
+    }
+  }
+]

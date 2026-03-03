@@ -1,0 +1,72 @@
+[
+  {
+    "id": "pt-1",
+    "text": "Olá, como você está?",
+    "translations": {
+      "en": "Hello, how are you?"
+    }
+  },
+  {
+    "id": "pt-2",
+    "text": "Bom dia.",
+    "translations": {
+      "en": "Good morning."
+    }
+  },
+  {
+    "id": "pt-3",
+    "text": "Muito obrigado.",
+    "translations": {
+      "en": "Thank you very much."
+    }
+  },
+  {
+    "id": "pt-4",
+    "text": "Por favor, repita isso.",
+    "translations": {
+      "en": "Please repeat that."
+    }
+  },
+  {
+    "id": "pt-5",
+    "text": "Eu estou aprendendo este idioma.",
+    "translations": {
+      "en": "I am learning this language."
+    }
+  },
+  {
+    "id": "pt-6",
+    "text": "Onde fica a estação de trem?",
+    "translations": {
+      "en": "Where is the train station?"
+    }
+  },
+  {
+    "id": "pt-7",
+    "text": "Eu gostaria de um café, por favor.",
+    "translations": {
+      "en": "I would like a coffee, please."
+    }
+  },
+  {
+    "id": "pt-8",
+    "text": "Quanto custa isso?",
+    "translations": {
+      "en": "How much does this cost?"
+    }
+  },
+  {
+    "id": "pt-9",
+    "text": "Você pode me ajudar?",
+    "translations": {
+      "en": "Could you help me?"
+    }
+  },
+  {
+    "id": "pt-10",
+    "text": "Até amanhã.",
+    "translations": {
+      "en": "See you tomorrow."
+    }
+  }
+]
