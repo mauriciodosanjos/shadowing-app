@@ -10,6 +10,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.4.0] — 2026-03-05
+
+### Fixed
+
+- **Interval not respected on last repetition** — auto-advance was triggering immediately after the last TTS playback ended, skipping the configured interval entirely; the countdown now always runs before advancing, regardless of whether it is the last or an intermediate repetition
+
+### Changed
+
+- **Adaptive interval for long phrases** — the effective interval between repetitions is now `max(configured interval, actual playback duration)`; if a phrase takes longer to play than the configured interval, the countdown is extended to match the playback time, giving the user a fair window to repeat the phrase before the next one starts; the floor updates dynamically if the user adjusts the interval slider mid-session
+
+---
+
 ## [0.3.0] — 2026-03-03
 
 ### Added
