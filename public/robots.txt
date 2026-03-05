@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shadowing-app-smoky.vercel.app/sitemap.xml
