@@ -129,6 +129,8 @@ export class ShadowingPlayer {
 
       // Use onboundary if available, otherwise rely on timer started in onstart
       let boundaryFired = false
+      let utteranceStartedAt = 0
+
       utterance.onboundary = (event) => {
         if (event.name !== 'word') return
         boundaryFired = true
@@ -143,6 +145,7 @@ export class ShadowingPlayer {
 
       utterance.onstart = () => {
         if (this.isStopped || activePlaybackId !== this.playbackId) return
+        utteranceStartedAt = Date.now()
         // Start timer fallback; if onboundary fires first it will clear this
         window.setTimeout(() => {
           if (!boundaryFired) {
@@ -157,47 +160,59 @@ export class ShadowingPlayer {
         }
 
         this.clearWordTimer()
+        options.onBoundary?.(-1)
+
         const latestTotal = getRepetitions()
+        const isLast = current >= latestTotal
 
-        if (current < latestTotal) {
-          options.onBoundary?.(-1)
-          const initialInterval = getIntervalSeconds()
+        // Effective interval = max(configured, actual playback duration)
+        // so the user always has at least as much time to repeat as the phrase took to play
+        const configuredInterval = getIntervalSeconds()
+        const utteranceDurationSec = utteranceStartedAt > 0
+          ? (Date.now() - utteranceStartedAt) / 1000
+          : 0
+        const effectiveInterval = Math.max(configuredInterval, utteranceDurationSec)
 
-          if (initialInterval <= 0) {
-            options.onIntervalEnd?.()
+        if (effectiveInterval <= 0) {
+          options.onIntervalEnd?.()
+          if (isLast) {
+            options.onDone?.()
+          } else {
             speakOnce(current + 1)
-            return
           }
-
-          const startedAt = Date.now()
-          options.onIntervalStart?.(initialInterval)
-
-          this.countdownIntervalId = window.setInterval(() => {
-            if (this.isStopped || activePlaybackId !== this.playbackId) {
-              if (this.countdownIntervalId !== null) {
-                window.clearInterval(this.countdownIntervalId)
-                this.countdownIntervalId = null
-              }
-              return
-            }
-
-            const elapsedMs = Date.now() - startedAt
-            const latestIntervalSeconds = getIntervalSeconds()
-            const remaining = Math.max(0, Number((latestIntervalSeconds - elapsedMs / 1000).toFixed(1)))
-            options.onIntervalTick?.(remaining)
-
-            if (remaining <= 0 && this.countdownIntervalId !== null) {
-              window.clearInterval(this.countdownIntervalId)
-              this.countdownIntervalId = null
-              options.onIntervalEnd?.()
-              speakOnce(current + 1)
-            }
-          }, 100)
-
           return
         }
 
-        options.onDone?.()
+        const startedAt = Date.now()
+        options.onIntervalStart?.(effectiveInterval)
+
+        this.countdownIntervalId = window.setInterval(() => {
+          if (this.isStopped || activePlaybackId !== this.playbackId) {
+            if (this.countdownIntervalId !== null) {
+              window.clearInterval(this.countdownIntervalId)
+              this.countdownIntervalId = null
+            }
+            return
+          }
+
+          const elapsedMs = Date.now() - startedAt
+          // Re-read configured interval in case user changed it mid-session,
+          // but never go below the utterance duration
+          const latestEffective = Math.max(getIntervalSeconds(), utteranceDurationSec)
+          const remaining = Math.max(0, Number((latestEffective - elapsedMs / 1000).toFixed(1)))
+          options.onIntervalTick?.(remaining)
+
+          if (remaining <= 0 && this.countdownIntervalId !== null) {
+            window.clearInterval(this.countdownIntervalId)
+            this.countdownIntervalId = null
+            options.onIntervalEnd?.()
+            if (isLast) {
+              options.onDone?.()
+            } else {
+              speakOnce(current + 1)
+            }
+          }
+        }, 100)
       }
 
       utterance.onerror = (event) => {
