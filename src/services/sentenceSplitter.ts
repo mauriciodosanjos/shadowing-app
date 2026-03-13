@@ -1,19 +1,26 @@
 /**
- * Splits a text into individual sentences using punctuation boundaries.
- * Works for latin scripts (.?!) and CJK (。？！).
- * Returns [text] unchanged if no split points are found.
+ * Splits a text into sentences/clauses using punctuation boundaries.
+ * Considers sentence-ending punctuation (. ? !) and CJK (。？！), and also
+ * treats commas and semicolons as clause separators. Returns the original
+ * text as a single item if no punctuation is present.
  */
 export function splitIntoSentences(text: string): string[] {
   const trimmed = text.trim()
   if (!trimmed) return []
 
-  // Match a sentence = non-punctuation chars + ending punctuation + optional space
-  const matches = trimmed.match(/[^.?!。？！]+[.?!。？！]+\s*/g)
-  if (!matches || matches.length < 2) return [trimmed]
+  // Match runs of non-punctuation followed by optional punctuation and spaces.
+  // This captures clauses ending with .,?,!, comma or semicolon, and also the
+  // final tail (which may lack punctuation).
+  const parts = trimmed.match(/[^.?!,;:：。？！]+[.?!,;:：。？！]*\s*/g)
+  if (!parts) return [trimmed]
 
-  const parts = matches.map((s) => s.trim()).filter((s) => s.length > 0)
-  // Fallback: if match doesn't cover all characters, return original
-  return parts.length > 1 ? parts : [trimmed]
+  const result = parts.map((s) => s.trim()).filter((s) => s.length > 0)
+
+  // If there's no punctuation at all, avoid splitting words.
+  const hasPunctuation = /[.?!,;:：。？！]/.test(trimmed)
+  if (!hasPunctuation) return [trimmed]
+
+  return result.length > 0 ? result : [trimmed]
 }
 
 /** Counts how many words precede sentence at index sentIdx in the full text splits. */

@@ -114,13 +114,8 @@ Settings are normalized on load (`normalizeSettings`) to handle missing/invalid 
 ## Services reference
 
 ### `shadowingPlayer.ts`
-- `ShadowingPlayer.play(options)` — plays a phrase with repetitions, interval countdown, word boundary events
-- `ShadowingPlayer.stop()` — cancels TTS and all timers immediately
-- Key options: `getRate`, `getRepetitions`, `getIntervalSeconds` — called per repetition so live slider changes take effect mid-session
-- Effective interval = `max(getIntervalSeconds(), actual utterance duration)` — guarantees the user always has at least as much time to repeat as the phrase took to play
 
-### `sentenceSplitter.ts`
-- `splitIntoSentences(text)` — splits on `.?!。？！`; returns `[text]` unchanged if fewer than 2 parts found
+ `splitIntoSentences(text)` — splits on sentence-ending punctuation (`. ? !` and CJK `。？！`) and also on commas, semicolons and colons; punctuation is always respected (no word-count heuristic). Returns `[text]` unchanged if no punctuation is present.
 - `sentenceWordOffset(sentences, sentIdx)` — word count before sentence `sentIdx` (for highlight offset)
 
 ### `pronunciationScore.ts`

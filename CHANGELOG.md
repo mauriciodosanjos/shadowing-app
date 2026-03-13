@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Sentence splitting:** the splitter now respects commas and semicolons as clause boundaries unconditionally (no word-count heuristic); clauses are returned in order and very short fragments are preserved or merged by downstream UI as needed.
+ - **Sentence splitting:** the splitter now respects commas, semicolons and colons as clause boundaries unconditionally (no word-count heuristic); clauses are returned in order and very short fragments are preserved or merged by downstream UI as needed.
+
 ---
 
 ## [0.4.0] — 2026-03-05

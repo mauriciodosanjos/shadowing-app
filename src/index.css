@@ -385,6 +385,14 @@ button:disabled {
   padding: 0 0.05em;
 }
 
+.phraseWordClickable {
+  cursor: pointer;
+}
+
+.phraseWordClickable:hover {
+  text-decoration: underline;
+}
+
 .phraseWord + .phraseWord::before {
   content: '\0020';
   white-space: pre;

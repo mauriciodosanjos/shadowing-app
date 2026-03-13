@@ -285,6 +285,40 @@ export function PracticePage({ activeLanguage, phrases, settings, onLanguageChan
     playPhraseRef.current = playPhrase
   }, [playPhrase])
 
+  const speakWord = useCallback((word: string, wordIdx: number) => {
+    if (!word) return
+    if (isRecordingFor !== null) return
+
+    // Stop any ongoing playback and timers
+    stopPlayback()
+
+    // Clean trailing punctuation for clearer pronunciation
+    const cleaned = word.replace(/^[\s"'“”‘’\(\[\{]+/, '').replace(/[.,;:!?]+$/g, '').trim()
+    if (!cleaned) return
+
+    try {
+      const utter = new SpeechSynthesisUtterance(cleaned)
+      utter.lang = getSpeechLocale(activeLanguage)
+
+      const voiceURI = settingsRef.current.voiceByLanguage[activeLanguage]
+      if (voiceURI) {
+        const matching = window.speechSynthesis.getVoices().find((v) => v.voiceURI === voiceURI)
+        if (matching) utter.voice = matching
+      }
+
+      utter.volume = settingsRef.current.volume
+      utter.rate = settingsRef.current.rate
+
+      setActiveWordIndex(wordIdx)
+      utter.onend = () => setActiveWordIndex(-1)
+      utter.onerror = () => setActiveWordIndex(-1)
+
+      window.speechSynthesis.speak(utter)
+    } catch (err) {
+      // ignore errors from SpeechSynthesis
+    }
+  }, [activeLanguage, isRecordingFor, stopPlayback])
+
   const startPlayback = useCallback(() => {
     if (!currentPhrase) {
       return
@@ -405,7 +439,17 @@ export function PracticePage({ activeLanguage, phrases, settings, onLanguageChan
           <>
             <p className="phraseText">
               {currentPhrase.text.split(' ').map((word, i) => (
-                <span key={i} className={i === activeWordIndex ? 'phraseWord phraseWordActive' : 'phraseWord'}>{word}</span>
+                <span
+                  key={i}
+                  role={isRecordingFor === null ? 'button' : undefined}
+                  tabIndex={isRecordingFor === null ? 0 : undefined}
+                  onClick={isRecordingFor === null ? () => speakWord(word, i) : undefined}
+                  onKeyDown={isRecordingFor === null ? (e) => { if ((e as any).key === 'Enter' || (e as any).key === ' ') { e.preventDefault(); speakWord(word, i) } } : undefined}
+                  aria-label={`Play pronunciation: ${word}`}
+                  className={`${i === activeWordIndex ? 'phraseWord phraseWordActive' : 'phraseWord'} ${isRecordingFor === null ? 'phraseWordClickable' : ''}`}
+                >
+                  {word}
+                </span>
               ))}
             </p>
             <p className="phraseMeta">{resolvedTranslation ?? labels.translationUnavailable}</p>
